@@ -1,0 +1,47 @@
+@media screen and (max-width: 700px) {
+  .page {
+  }
+
+  .profile {
+    flex-direction: column;
+    display: flex;
+  }
+
+  .profile__avatar {
+    margin: auto;
+  }
+
+  .profile__info {
+    display: flex;
+    margin: 30px 0 36px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .profile__name {
+    font-size: 22px;
+    text-align: center;
+    font-weight: 500;
+  }
+  .profile__description {
+    font-size: 14px;
+    text-align: center;
+    width: 282px;
+  }
+
+  .profile__editing-button {
+    width: 18px;
+    height: 18px;
+    margin: 3px 0 0 10px;
+    padding: 0;
+  }
+  .profile__add-button {
+    margin: auto;
+    width: 282px;
+  }
+
+  .footer__copyright {
+    display: flex;
+    justify-content: center;
+  }
+}
