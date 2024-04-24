@@ -1,3 +1,5 @@
+Video of this project: https://www.youtube.com/watch?v=7InrT5MnxVk
+
 # Project 3: Around The U.S.
 
 ### Overview  
