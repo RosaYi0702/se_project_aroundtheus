@@ -5,11 +5,20 @@
 }
 
 .page__section {
-  max-width: 800px;
+  max-width: 880px;
   width: 100%;
   position: relative;
   margin: 0 auto;
 }
+
+.page__line {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #545454;
+  margin-top: 29px;
+}
+
 .page__content {
   display: flex;
   flex-direction: column;
