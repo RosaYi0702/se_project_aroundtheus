@@ -10,12 +10,12 @@
 
 @media screen and (max-width: 340px) {
   .header {
-    margin-top: 9px;
-    max-height: 56px;
+    margin-top: 28px;
   }
 
   .header__logo {
-    margin-left: 8px;
-    margin-bottom: 22px;
+    max-width: 126px;
+    margin-left: 27px;
+    margin-bottom: 32px;
   }
 }
