@@ -1,6 +1,6 @@
-[Link to the website](https://rosayi0702.github.io/se_project_aroundtheus/)
+* [Link to the website](https://rosayi0702.github.io/se_project_aroundtheus/)
 
-Video of this project: https://www.youtube.com/watch?v=7InrT5MnxVk
+* [Video of this project](https://www.youtube.com/watch?v=7InrT5MnxVk)
 
 # Project 3: Around The U.S.
 
