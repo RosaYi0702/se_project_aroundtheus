@@ -1,16 +1,21 @@
 .header {
-  max-width: 880px;
+  margin-top: 45px;
+  border-bottom: 1px solid rgba(84, 84, 84, 0.7);
 }
 
 .header__logo {
-  margin-top: 45px;
+  margin-bottom: 41px;
   max-height: 74px;
 }
 
-@media screen and (max-width: 320px) {
-  .header__logo {
-    margin-top: 28px;
-    margin-left: 8px;
+@media screen and (max-width: 340px) {
+  .header {
+    margin-top: 9px;
     max-height: 56px;
+  }
+
+  .header__logo {
+    margin-left: 8px;
+    margin-bottom: 22px;
   }
 }

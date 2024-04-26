@@ -1,7 +1,6 @@
 .page {
   background-color: black;
   color: white;
-  padding: 19px;
 }
 
 .page__section {
@@ -11,16 +10,14 @@
   margin: 0 auto;
 }
 
-.page__line {
-  display: block;
-  height: 1px;
-  border: 0;
-  border-top: 1px solid #545454;
-  margin-top: 29px;
-}
-
 .page__content {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+}
+
+@media screen and (max-width: 340px) {
+  .page {
+    padding: 19px;
+  }
 }

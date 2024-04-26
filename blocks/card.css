@@ -18,6 +18,7 @@
   justify-content: space-between;
   align-items: center;
 }
+
 .card__name {
   width: 219px;
   font-weight: 900;
@@ -36,8 +37,9 @@
   height: 18px;
   background: transparent;
   border-width: 0;
+  cursor: pointer;
 }
 
-.card__like {
+.card__like:hover {
   opacity: 50%;
 }
