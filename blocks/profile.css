@@ -98,7 +98,7 @@
     font-size: 22px;
     line-height: 26.63px;
     text-align: center;
-    max-width: 196px;
+    min-width: 196px;
   }
   .profile__description {
     font-size: 14px;
