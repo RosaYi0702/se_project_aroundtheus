@@ -16,8 +16,8 @@
 
 .modal__container {
   position: relative;
-  max-width: 430px;
-  max-height: 330px;
+  max-width: 358px;
+  max-height: 258px;
   background-color: #fff;
   margin: auto;
   border-radius: 10px;
@@ -48,6 +48,7 @@
   font-weight: 900;
   font-size: 24px;
   line-height: 29.05px;
+  margin: 0;
 }
 
 .modal__form {
@@ -82,6 +83,7 @@
   font-weight: 400;
   height: 50.15px;
   cursor: pointer;
+  border-radius: 2px;
 }
 
 .modal__button:hover {
@@ -89,10 +91,28 @@
 }
 
 @media screen and (max-width: 620px) {
+  .modal__container {
+    max-width: 238px;
+    max-height: 272px;
+    padding: 25px 22px;
+  }
+
+  .modal__form {
+    padding-top: 45px;
+  }
+
   .modal__close {
     width: 26px;
     height: 26px;
     right: 0;
     top: -39.62px;
+  }
+
+  .modal__heading {
+    font-size: 22px;
+  }
+
+  .modal__button {
+    margin-top: 45px;
   }
 }
