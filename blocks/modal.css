@@ -59,7 +59,7 @@
   border: none;
   outline: none;
   width: 100%;
-  border-bottom: #000 1px solid;
+  border-bottom: rgba(0, 0, 0, 0.2) 1px solid;
   font-family: Inter, Arial, sans-serif;
   font-weight: 400;
   font-size: 14px;
@@ -91,6 +91,10 @@
 }
 
 @media screen and (max-width: 620px) {
+  .modal__heading {
+    font-size: 18px;
+  }
+
   .modal__container {
     max-width: 238px;
     max-height: 272px;
