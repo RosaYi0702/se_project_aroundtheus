@@ -41,8 +41,8 @@
             <p class="profile__description">Explorer</p>
           </div>
 
-          <button type="button" class="profile__add-button">
-            <img src="./images/add.svg" alt="add button" />
+          <button type="button" class="profile__add-card-button">
+            <img src="./images/add.svg" alt="add button" id="card-add-button" />
           </button>
         </section>
         <section class="cards page__section">
@@ -71,6 +71,27 @@
             placeholder="Description"
           />
           <button class="modal__button">Save</button>
+        </form>
+      </div>
+    </div>
+    <div class="modal" id="card-add-modal">
+      <div class="modal__container">
+        <button class="modal__close" id="modal-close-button"></button>
+        <p class="modal__heading">New Place</p>
+        <form class="modal__form" id="add-card-form">
+          <input
+            class="modal__input"
+            type="text"
+            id="card-title-input"
+            placeholder="Title"
+          />
+          <input
+            class="modal__input"
+            type="text"
+            id="image-link-input"
+            placeholder="Image link"
+          />
+          <button class="modal__button">Create</button>
         </form>
       </div>
     </div>
