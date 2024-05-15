@@ -149,7 +149,7 @@ function handleCardAddSubmit(e) {
 
 /* ------------------------------ Profile Edit ------------------------------ */
 profileEditButton.addEventListener("click", () => {
-  fillProfileForm;
+  fillProfileForm();
   openPopup(profileEditModal);
 });
 
