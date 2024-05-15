@@ -57,6 +57,9 @@ const cardTemplate = document
 
 const cardListEl = document.querySelector(".cards__list");
 
+/* ---------------------------------- Image --------------------------------- */
+const imageExhibit = document.querySelector("#image-modal");
+const imageClose = imageExhibit.querySelector("#modal-close-button");
 /* -------------------------------------------------------------------------- */
 /*                                  Functions                                 */
 /* -------------------------------------------------------------------------- */
@@ -70,17 +73,35 @@ function openPopup(modal) {
 
 /* ---------------------------------- Card ---------------------------------- */
 function getCardElement(data) {
+  //card const
   const cardElement = cardTemplate.cloneNode(true);
   const cardImageEl = cardElement.querySelector(".card__image");
   const cardNameEl = cardElement.querySelector(".card__name");
   const cardLikeButton = cardElement.querySelector(".card__like");
   const cardTrash = cardElement.querySelector(".card__trash");
+
+  //exhibit const
+  const exhibitImageEl = imageExhibit.querySelector(".modal__exhibit-image");
+  const exhibitNameEl = imageExhibit.querySelector(
+    ".modal__exhibit-image-name"
+  );
+  //like button
   cardLikeButton.addEventListener("click", () => {
     cardLikeButton.classList.toggle("card__like_active");
   });
 
+  //trash
   cardTrash.addEventListener("click", () => {
     cardElement.remove();
+  });
+
+  //exhibit
+  cardImageEl.addEventListener("click", () => {
+    exhibitImageEl.src = data.link;
+    exhibitImageEl.alt = data.name;
+    exhibitNameEl.textContent = data.name;
+
+    openPopup(imageExhibit);
   });
 
   cardImageEl.src = data.link;
@@ -143,3 +164,6 @@ cardAddForm.addEventListener("submit", handleCardAddSubmit);
 
 //Card List
 initialCards.forEach((data) => renderCard(data, cardListEl));
+
+/* ---------------------------------- Image --------------------------------- */
+imageClose.addEventListener("click", () => closePopup(imageExhibit));

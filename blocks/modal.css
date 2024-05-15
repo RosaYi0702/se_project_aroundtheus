@@ -90,6 +90,26 @@
   opacity: 60%;
 }
 
+.modal__exhibit {
+  margin: auto;
+  position: relative;
+}
+
+.modal__exhibit-image {
+  max-width: 75vw;
+  max-height: 75vh;
+  margin: 0;
+}
+
+.modal__exhibit-image-name {
+  font-family: Inter, Arial, sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14.52px;
+  margin: 10px 0 0;
+  color: #fff;
+}
+
 @media screen and (max-width: 620px) {
   .modal__heading {
     font-size: 18px;
