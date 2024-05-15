@@ -2,6 +2,7 @@
   width: 282px;
   background-color: white;
   border-radius: 10px;
+  position: relative;
 }
 
 .card__image {
@@ -10,6 +11,21 @@
   object-fit: fill;
   margin: 0;
   border-radius: 10px 10px 0 0;
+}
+
+.card__trash {
+  width: 18px;
+  height: 19.3px;
+  background: transparent url("../images/Trash.svg") center no-repeat;
+  position: absolute;
+  top: 18px;
+  right: 15px;
+  border: none;
+  cursor: pointer;
+}
+
+.card__trash:hover {
+  opacity: 60%;
 }
 
 .card__description {
