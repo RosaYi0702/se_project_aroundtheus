@@ -33,11 +33,15 @@
 }
 
 .card__like {
-  width: 20px;
+  width: 21px;
   height: 18px;
-  background: transparent;
+  background: transparent url("../images/heart.svg") center no-repeat;
   border-width: 0;
   cursor: pointer;
+}
+
+.card__like_active {
+  background-image: url("../images/heart_active.svg");
 }
 
 .card__like:hover {

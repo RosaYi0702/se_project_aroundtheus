@@ -70,18 +70,18 @@ function openPopup(modal) {
 
 /* ---------------------------------- Card ---------------------------------- */
 function getCardElement(data) {
-  //clone the template element with all its content and store it in a cardElement variable
   const cardElement = cardTemplate.cloneNode(true);
-  //access the card title and image and store them in variables
   const cardImageEl = cardElement.querySelector(".card__image");
   const cardNameEl = cardElement.querySelector(".card__name");
-  //set the path to the image to the link field of the object
+  const cardLikeButton = cardElement.querySelector(".card__like");
+  cardLikeButton.addEventListener("click", () => {
+    cardLikeButton.classList.toggle("card__like_active");
+  });
+
   cardImageEl.src = data.link;
-  //set the image alt text to the name field of the object
   cardImageEl.alt = data.name;
-  //set the card title to the name field of the object, too
   cardNameEl.textContent = data.name;
-  //return the ready HTML element with the filled-in data
+
   return cardElement;
 }
 
@@ -107,6 +107,7 @@ function handleCardAddSubmit(e) {
   const name = cardNameInput.value;
   const link = cardUrlInput.value;
   renderCard({ name, link }, cardListEl);
+
   closePopup(cardAddModal);
 }
 
