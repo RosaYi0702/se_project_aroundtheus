@@ -57,6 +57,7 @@
     <footer class="footer page__section">
       <p class="footer__copyright">© 2024 Around The U.S.</p>
     </footer>
+    <!-- ------------------------------- Profile ------------------------------- -->
     <div class="modal" id="profile-edit-modal">
       <div class="modal__container">
         <button
@@ -71,21 +72,31 @@
             type="text"
             id="profile-title-input"
             placeholder="Name"
+            minlength="2"
+            maxlength="40"
             required
           />
+          <span class="modal__error" id="profile-title-input-error"></span>
           <input
             class="modal__input"
             type="text"
             id="profile-description-input"
             placeholder="Description"
+            minlength="2"
+            maxlength="400"
             required
           />
+          <span
+            class="modal__error"
+            id="profile-description-input-error"
+          ></span>
           <button class="modal__button" id="profile-save-button" type="submit">
             Save
           </button>
         </form>
       </div>
     </div>
+    <!-- -------------------------------- Card --------------------------------- -->
     <div class="modal" id="card-add-modal">
       <div class="modal__container">
         <button
@@ -100,8 +111,11 @@
             type="text"
             id="card-title-input"
             placeholder="Title"
+            minlength="1"
+            maxlength="30"
             required
           />
+          <span class="modal__error" id="card-title-input-error"></span>
           <input
             class="modal__input"
             type="url"
@@ -109,7 +123,10 @@
             placeholder="Image link"
             required
           />
-          <button class="modal__button" type="submit">Create</button>
+          <span class="modal__error" id="image-link-input-error"></span>
+          <button class="modal__button modal__button_disabled" type="submit">
+            Create
+          </button>
         </form>
       </div>
     </div>
@@ -135,5 +152,6 @@
       </li>
     </template>
     <script src="./scripts/index.js" defer></script>
+    <script src="./scripts/validation.js" defer></script>
   </body>
 </html>
