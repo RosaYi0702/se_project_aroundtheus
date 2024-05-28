@@ -61,17 +61,17 @@ function checkInputValidity(formEl, inputEl, options) {
 }
 
 function setEventListener(formEl, options) {
-  const { inputSelector } = options;
+  const { inputSelector, submitButtonSelector } = options;
   //3.Selects all inputs inside the form and makes an array from them.
   const inputEls = [...formEl.querySelectorAll(inputSelector)];
-  //7.select the button of the form
-  const submitButton = formEl.querySelector(submitButtonSelector);
+
   inputEls.forEach((inputEl) => {
     //4.check every single typing. use"change" for checking after finish input.
     inputEl.addEventListener("input", () => {
       //5. tell us each change is valid or not.
       checkInputValidity(formEl, inputEl, options);
-      //7.TOggle Button
+      //7.Toggle Button
+      const submitButton = formEl.querySelector(submitButtonSelector);
       toggleButtonState(inputEls, submitButton, options);
     });
   });

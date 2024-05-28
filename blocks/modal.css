@@ -107,10 +107,6 @@
   border-radius: 2px;
 }
 
-.modal__button:hover {
-  opacity: 60%;
-}
-
 .modal__button:hover:not(:disabled) {
   opacity: 60%;
 }
