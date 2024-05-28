@@ -60,15 +60,36 @@ const cardListEl = document.querySelector(".cards__list");
 /* ---------------------------------- Image --------------------------------- */
 const imageExhibit = document.querySelector("#image-modal");
 const imageClose = imageExhibit.querySelector("#modal-close-button");
+
+/* ---------------------------------- modal --------------------------------- */
+const openModal = document.querySelector("modal_opened");
+
 /* -------------------------------------------------------------------------- */
 /*                                  Functions                                 */
 /* -------------------------------------------------------------------------- */
 function closePopup(modal) {
   modal.classList.remove("modal_opened");
+  modal.removeEventListener("click", closePopupOverlay);
+  document.removeEventListener("keydown", closeByEsc);
 }
 
 function openPopup(modal) {
   modal.classList.add("modal_opened");
+  modal.addEventListener("click", closePopupOverlay);
+  document.addEventListener("keydown", closeByEsc);
+}
+
+function closePopupOverlay(evt) {
+  if (evt.target === evt.currentTarget) {
+    closePopup(evt.currentTarget);
+  }
+}
+
+function closeByEsc(evt) {
+  if (evt.key === "Escape") {
+    const openedModal = document.querySelector(".modal_opened");
+    closePopup(openedModal);
+  }
 }
 /* --------------------------------- Profile -------------------------------- */
 function fillProfileForm() {
@@ -157,6 +178,7 @@ profileModalClose.addEventListener("click", () => closePopup(profileEditModal));
 
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 
+profileEditModal.addEventListener("click", closePopupOverlay);
 /* ---------------------------------- Card ---------------------------------- */
 //add card button
 cardAddButton.addEventListener("click", () => {
