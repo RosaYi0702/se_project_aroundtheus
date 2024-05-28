@@ -32,9 +32,9 @@ function enableButton(submitButton, { inactiveButtonClass }) {
 function toggleButtonState(inputEls, submitButton, { inactiveButtonClass }) {
   if (hasInvalidInput(inputEls)) {
     disableButton(submitButton, { inactiveButtonClass });
-    return;
+  } else {
+    enableButton(submitButton, { inactiveButtonClass });
   }
-  enableButton(submitButton, { inactiveButtonClass });
 }
 
 //6. invalid
@@ -65,7 +65,7 @@ function setEventListener(formEl, options) {
   //3.Selects all inputs inside the form and makes an array from them.
   const inputEls = [...formEl.querySelectorAll(inputSelector)];
   //7.select the button of the form
-  const submitButton = formEl.querySelector(".modal__button");
+  const submitButton = formEl.querySelector(submitButtonSelector);
   inputEls.forEach((inputEl) => {
     //4.check every single typing. use"change" for checking after finish input.
     inputEl.addEventListener("input", () => {

@@ -111,10 +111,15 @@
   opacity: 60%;
 }
 
+.modal__button:hover:not(:disabled) {
+  opacity: 60%;
+}
+
 .modal__button_disabled {
   border: rgba(0, 0, 0, 0.2) 1px solid;
   background-color: transparent;
   color: rgba(0, 0, 0, 0.2);
+  cursor: default;
 }
 
 .modal__exhibit {
