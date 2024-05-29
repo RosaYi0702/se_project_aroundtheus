@@ -19,13 +19,13 @@ function hasInvalidInput(inputList) {
 //9.disable Button
 function disableButton(submitButton, { inactiveButtonClass }) {
   submitButton.classList.add(inactiveButtonClass);
-  submitButton.disable = true;
+  submitButton.disabled = true;
 }
 
 //9.enable button
 function enableButton(submitButton, { inactiveButtonClass }) {
   submitButton.classList.remove(inactiveButtonClass);
-  submitButton.disable = false;
+  submitButton.disabled = false;
 }
 
 //7.Button show invalid or not
