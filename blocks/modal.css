@@ -83,6 +83,7 @@
   line-height: 14.52px;
   font-family: Inter, Arial, sans-serif;
   opacity: 0;
+  position: absolute;
 }
 
 .modal__input_type_error {
