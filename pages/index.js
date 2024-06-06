@@ -181,7 +181,7 @@ function handleCardAddSubmit(e) {
   renderCard({ name, link }, cardListEl);
   e.target.reset();
   closePopup(cardAddModal);
-  CardAddFormValidator.resetValidation();
+  cardAddFormValidator.resetValidation();
 }
 
 /* -------------------------------------------------------------------------- */
@@ -226,7 +226,7 @@ const config = {
   errorClass: "modal__error_visible",
 };
 
-const EditFormValidator = new FormValidator(config, profileEditForm);
-EditFormValidator.enableValidation();
-const CardAddFormValidator = new FormValidator(config, cardAddForm);
-CardAddFormValidator.enableValidation();
+const editFormValidator = new FormValidator(config, profileEditForm);
+editFormValidator.enableValidation();
+const cardAddFormValidator = new FormValidator(config, cardAddForm);
+cardAddFormValidator.enableValidation();

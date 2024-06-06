@@ -17,16 +17,15 @@ export default class Card {
   /* --------------------------- _setEventListeners --------------------------- */
   _setEventListeners() {
     //like button
-    this._cardElement
-      .querySelector(".card__like")
-      .addEventListener("click", () => {
-        this._cardLikeButtonHandler();
-      });
+    this._likeButton = this._cardElement.querySelector(".card__like");
+    this._likeButton.addEventListener("click", () => {
+      this._handleLikeButton();
+    });
     //trash
     this._cardElement
       .querySelector(".card__trash")
       .addEventListener("click", () => {
-        this._trashButtonHandler();
+        this._handleTrashButton();
       });
 
     //exhibit
@@ -38,20 +37,19 @@ export default class Card {
   }
 
   /* --------------------------------- Handler -------------------------------- */
-  _cardLikeButtonHandler() {
-    this._cardElement
-      .querySelector(".card__like")
-      .classList.toggle("card__like_active");
+  _handleLikeButton() {
+    this._likeButton.classList.toggle("card__like_active");
   }
-  _trashButtonHandler() {
-    this._cardElement.remove();
+  _handleTrashButton() {
+    this._cardElement = null;
   }
 
   /* ------------------------------ generateCard ------------------------------ */
   generateCard() {
     this._cardElement = this._getTemplate();
-    this._cardElement.querySelector(".card__image").src = this._link;
-    this._cardElement.querySelector(".card__image").alt = this._name;
+    this._imageElement = this._cardElement.querySelector("card__image");
+    this._imageElement.src = this._link;
+    this._imageElement.alt = this._name;
     this._cardElement.querySelector(".card__name").textContent = this._name;
 
     this._setEventListeners();
