@@ -48,12 +48,12 @@ export default class Card {
   /* ------------------------------ generateCard ------------------------------ */
   generateCard() {
     this._cardElement = this._getTemplate();
-    this._imageElement = this._cardElement.querySelector("card__image");
+    this._imageElement = this._cardElement.querySelector(".card__image");
     this._imageElement.src = this._link;
     this._imageElement.alt = this._name;
     this._cardElement.querySelector(".card__name").textContent = this._name;
-
     this._setEventListeners();
+
     return this._cardElement;
   }
 }
