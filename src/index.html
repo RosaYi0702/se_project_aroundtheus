@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./pages/index.css" />
+
     <meta name="author" content="Yi Hui Lin" />
     <meta
       name="description"
@@ -17,7 +17,7 @@
     <div class="page__content">
       <header class="header page__section">
         <img
-          src="./images/logo.svg"
+          src="<%= require('./images/logo.svg')%>"
           alt="Around the US logo"
           class="header__logo"
         />
@@ -25,7 +25,7 @@
       <main class="content">
         <section class="profile page__section">
           <img
-            src="./images/jacques-cousteau-1.jpg"
+            src="<%= require('./images/jacques-cousteau-1.jpg')%>"
             alt="Avatar"
             class="profile__avatar"
           />
@@ -36,7 +36,7 @@
               class="profile__editing-button"
               id="profile-edit-button"
             >
-              <img src="./images/editing.svg" alt="editing" />
+              <img src="<%= require('./images/editing.svg')%>" alt="editing" />
             </button>
             <p class="profile__description">Explorer</p>
           </div>
@@ -46,7 +46,7 @@
             class="profile__add-card-button"
             id="card-add-button"
           >
-            <img src="./images/add.svg" alt="add button" />
+            <img src="<%= require('./images/add.svg')%>" alt="add button" />
           </button>
         </section>
         <section class="cards page__section">
@@ -71,6 +71,7 @@
             class="modal__input"
             type="text"
             id="profile-title-input"
+            name="name"
             placeholder="Name"
             minlength="2"
             maxlength="40"
@@ -81,6 +82,7 @@
             class="modal__input"
             type="text"
             id="profile-description-input"
+            name="description"
             placeholder="Description"
             minlength="2"
             maxlength="400"
@@ -110,6 +112,7 @@
             class="modal__input"
             type="text"
             id="card-title-input"
+            name="title"
             placeholder="Title"
             minlength="1"
             maxlength="30"
@@ -118,6 +121,7 @@
           <span class="modal__error" id="card-title-input-error"></span>
           <input
             class="modal__input"
+            name="link"
             type="url"
             id="image-link-input"
             placeholder="Image link"
@@ -151,6 +155,5 @@
         </div>
       </li>
     </template>
-    <script src="./pages/index.js" type="module"></script>
   </body>
 </html>
