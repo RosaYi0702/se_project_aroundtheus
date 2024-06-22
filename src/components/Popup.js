@@ -27,8 +27,8 @@ export default class Popup {
     this._closeButton = this._popupElement.querySelector("#modal-close-button");
 
     this._popupElement.addEventListener("click", closePopupOverlay);
-    this._closeButton.addEventListener("click", () =>
-      close(this._popupElement)
-    );
+    this._closeButton.addEventListener("click", () => {
+      close(this._popupElement);
+    });
   }
 }
