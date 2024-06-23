@@ -231,23 +231,25 @@ function handleCardAddSubmit(e) {
 /* -------------------------------------------------------------------------- */
 
 /* ------------------------------ Profile Edit ------------------------------ */
-/*
+
 profileEditButton.addEventListener("click", () => {
   fillProfileForm();
-  openPopup(profileEditModal);
+  profileEditPopup.open();
+  //openPopup(profileEditModal);
 });
-*/
+
 //profileModalClose.addEventListener("click", () => closePopup(profileEditModal));
 
 //profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 
 /* ---------------------------------- Card ---------------------------------- */
 //add card button
-/*
+
 cardAddButton.addEventListener("click", () => {
-  openPopup(cardAddModal);
+  cardAddPopup.open();
+  //openPopup(cardAddModal);
 });
-*/
+
 //cardAddClose.addEventListener("click", () => closePopup(cardAddModal));
 
 //cardAddForm.addEventListener("submit", handleCardAddSubmit);
