@@ -88,11 +88,11 @@ const profileEditPopup = new PopupWithForm(
   "#profile-edit-modal",
   handleProfileEditSubmit
 );
-profileEditPopup.setEventListeners;
+profileEditPopup.setEventListeners();
 
 const cardAddPopup = new PopupWithForm("#card-add-modal", handleCardAddSubmit);
 
-cardAddPopup.setEventListeners;
+cardAddPopup.setEventListeners();
 
 /* ----------------------------- PopupWithImage (Card)----------------------------- */
 //initialCards.forEach((initialCard) => {
