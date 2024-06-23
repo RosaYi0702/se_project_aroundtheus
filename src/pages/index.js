@@ -15,7 +15,7 @@ import UserInfo from "../components/UserInfo.js";
 /* -------------------------------------------------------------------------- */
 
 /* ------------------------------ Profile Edit ------------------------------ */
-//const profileEditButton = document.querySelector("#profile-edit-button");
+const profileEditButton = document.querySelector("#profile-edit-button");
 //const profileEditModal = document.querySelector("#profile-edit-modal");
 //const profileModalClose = profileEditModal.querySelector("#modal-close-button");
 /*const profileTitleInput = profileEditModal.querySelector(
@@ -31,7 +31,7 @@ const profileDescriptionInput = profileEditModal.querySelector(
 
 /* ---------------------------------- Card ---------------------------------- */
 //add Card
-//const cardAddButton = document.querySelector("#card-add-button");
+const cardAddButton = document.querySelector("#card-add-button");
 //const cardAddModal = document.querySelector("#card-add-modal");
 //const cardAddClose = cardAddModal.querySelector("#modal-close-button");
 //Card List
@@ -88,10 +88,11 @@ const profileEditPopup = new PopupWithForm(
   "#profile-edit-modal",
   handleProfileEditSubmit
 );
-profileEditPopup.setEventListeners();
+profileEditPopup.setEventListeners;
 
 const cardAddPopup = new PopupWithForm("#card-add-modal", handleCardAddSubmit);
-cardAddPopup.setEventListeners();
+
+cardAddPopup.setEventListeners;
 
 /* ----------------------------- PopupWithImage (Card)----------------------------- */
 //initialCards.forEach((initialCard) => {
