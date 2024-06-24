@@ -210,9 +210,11 @@ function renderCard(initialCard) {
 /* -------------------------------------------------------------------------- */
 
 /* ------------------------------ Profile Edit ------------------------------ */
-function handleProfileEditSubmit(e) {
+function handleProfileEditSubmit(userData) {
   //e.preventDefault();
-  profileInfo.setUserInfo;
+  profileInfo.setUserInfo(userData);
+  profileEditPopup.close();
+
   //closePopup(profileEditModal);
 }
 
