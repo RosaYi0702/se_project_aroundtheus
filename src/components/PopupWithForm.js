@@ -24,13 +24,11 @@ export default class PopupWithForm extends Popup {
     });
     return formValues;
   }
-  setEventlisteners() {
-    this._popupForm
-      .querySelector(".modal__button")
-      .setEventListeners("submit", (evt) => {
-        evt.preventDefault;
-        this._handleFormSubmit(this._getInputValues());
-      });
+  setEventListeners() {
+    this._popupForm.addEventListeners("submit", (evt) => {
+      evt.preventDefault();
+      this._handleFormSubmit(this._getInputValues());
+    });
 
     super.setEventListeners();
   }

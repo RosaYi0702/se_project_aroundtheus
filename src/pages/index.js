@@ -83,14 +83,20 @@ editFormValidator.enableValidation();
 const cardAddFormValidator = new FormValidator(config, cardAddForm);
 cardAddFormValidator.enableValidation();
 
+/* -------------------------------- UserInfo -------------------------------- */
+const profileInfo = new UserInfo(".profile__name", ".profile__description");
+
 /* ------------------------------ PopupWithForm ----------------------------- */
 const profileEditPopup = new PopupWithForm(
   "#profile-edit-modal",
-  handleProfileEditSubmit
+  handleProfileEditSubmit()
 );
 profileEditPopup.setEventListeners();
 
-const cardAddPopup = new PopupWithForm("#card-add-modal", handleCardAddSubmit);
+const cardAddPopup = new PopupWithForm(
+  "#card-add-modal",
+  handleCardAddSubmit()
+);
 
 cardAddPopup.setEventListeners();
 
@@ -99,9 +105,6 @@ cardAddPopup.setEventListeners();
 const CardImagePopup = new PopupWithImage("#image-modal");
 CardImagePopup.setEventListeners();
 //});
-
-/* -------------------------------- UserInfo -------------------------------- */
-const profileInfo = new UserInfo(".profile__name", ".profile__description");
 
 /* --------------------------------- Section -------------------------------- */
 
