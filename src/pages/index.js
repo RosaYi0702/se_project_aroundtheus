@@ -3,7 +3,6 @@
 /* -------------------------------------------------------------------------- */
 import "./index.css";
 import { initialCards, config } from "../utils/constants.js";
-import { initialCards, config } from "../utils/constants.js";
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import Section from "../components/Section.js";
@@ -88,7 +87,6 @@ function handleProfileEditSubmit(userData) {
   profileEditPopup.close();
 }
 function handleCardAddSubmit(formValues) {
-  console.log("handleCardAddSubmit called with:", formValues);
   const name = formValues.title;
   const link = formValues.link;
   renderCard({ name, link });
@@ -100,10 +98,11 @@ function handleCardAddSubmit(formValues) {
 /* ------------------------------ Profile Edit ------------------------------ */
 profileEditButton.addEventListener("click", () => {
   fillProfileForm();
-  cardAddFormValidator.resetValidation();
+  editFormValidator.resetValidation();
   profileEditPopup.open();
 });
 /* ---------------------------------- Card ---------------------------------- */
 cardAddButton.addEventListener("click", () => {
+  cardAddFormValidator.resetValidation();
   cardAddPopup.open();
 });
