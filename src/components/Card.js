@@ -29,11 +29,9 @@ export default class Card {
       });
 
     //exhibit
-    this._cardElement
-      .querySelector(".card__image")
-      .addEventListener("click", () => {
-        this._handleImageClick(this._name, this._link);
-      });
+    this._imageElement.addEventListener("click", () => {
+      this._handleImageClick(this._name, this._link);
+    });
   }
 
   /* --------------------------------- Handler -------------------------------- */
