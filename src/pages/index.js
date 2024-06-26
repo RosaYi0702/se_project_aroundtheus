@@ -223,7 +223,7 @@ function handleCardAddSubmit(formValues) {
   //e.preventDefault();
   console.log("handleCardAddSubmit called with:", formValues);
   const name = formValues.title;
-  const link = formValues.url;
+  const link = formValues.link;
   renderCard({ name, link });
 
   //e.target.reset();
