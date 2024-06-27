@@ -26,10 +26,24 @@ const profileDescriptionInput = document.querySelector(
 /*                                     OOP                                    */
 /* -------------------------------------------------------------------------- */
 /* --------------------------- FormValidator(Form) -------------------------- */
-const editFormValidator = new FormValidator(config, profileEditForm);
-editFormValidator.enableValidation();
-const cardAddFormValidator = new FormValidator(config, cardAddForm);
-cardAddFormValidator.enableValidation();
+const formValidators = {};
+
+const enableValidation = (config) => {
+  const formList = Array.from(document.querySelectorAll(config.formSelector));
+  formList.forEach((formElement) => {
+    const validator = new FormValidator(config, formElement);
+    const formName = formElement.getAttribute("id");
+    formValidators[formName] = validator;
+    validator.enableValidation();
+  });
+};
+
+enableValidation(config);
+
+//const editFormValidator = new FormValidator(config, profileEditForm);
+//editFormValidator.enableValidation();
+//const cardAddFormValidator = new FormValidator(config, cardAddForm);
+//cardAddFormValidator.enableValidation();
 /* -------------------------------- UserInfo -------------------------------- */
 const profileInfo = new UserInfo(".profile__name", ".profile__description");
 /* ------------------------------ PopupWithForm ----------------------------- */
@@ -101,11 +115,13 @@ function handleCardAddSubmit(formValues) {
 /* ------------------------------ Profile Edit ------------------------------ */
 profileEditButton.addEventListener("click", () => {
   fillProfileForm();
-  editFormValidator.resetValidation();
+  //editFormValidator.resetValidation();
+  formValidators[profileEditForm.getAttribute("id")].resetValidation();
   profileEditPopup.open();
 });
 /* ---------------------------------- Card ---------------------------------- */
 cardAddButton.addEventListener("click", () => {
-  cardAddFormValidator.resetValidation();
+  //cardAddFormValidator.resetValidation();
+  formValidators[cardAddForm.getAttribute("id")].resetValidation();
   cardAddPopup.open();
 });
