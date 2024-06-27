@@ -122,6 +122,5 @@ profileEditButton.addEventListener("click", () => {
 /* ---------------------------------- Card ---------------------------------- */
 cardAddButton.addEventListener("click", () => {
   //cardAddFormValidator.resetValidation();
-  formValidators[cardAddForm.getAttribute("id")].resetValidation();
   cardAddPopup.open();
 });
