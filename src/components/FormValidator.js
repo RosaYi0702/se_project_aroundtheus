@@ -78,6 +78,9 @@ export default class FormValidator {
         this._toggleButtonState();
       });
     });
+    this._formElement.addEventListener("submit", (e) => {
+      e.preventDefault();
+    });
   }
 
   resetValidation() {

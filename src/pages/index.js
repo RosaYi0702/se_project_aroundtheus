@@ -33,12 +33,15 @@ cardAddFormValidator.enableValidation();
 /* -------------------------------- UserInfo -------------------------------- */
 const profileInfo = new UserInfo(".profile__name", ".profile__description");
 /* ------------------------------ PopupWithForm ----------------------------- */
-const profileEditPopup = new PopupWithForm(
-  "#profile-edit-modal",
-  handleProfileEditSubmit
-);
+const profileEditPopup = new PopupWithForm({
+  popupSelector: "#profile-edit-modal",
+  handleFormSubmit: handleProfileEditSubmit,
+});
 profileEditPopup.setEventListeners();
-const cardAddPopup = new PopupWithForm("#card-add-modal", handleCardAddSubmit);
+const cardAddPopup = new PopupWithForm({
+  popupSelector: "#card-add-modal",
+  handleFormSubmit: handleCardAddSubmit,
+});
 cardAddPopup.setEventListeners();
 /* ----------------------------- PopupWithImage (Card)----------------------------- */
 const cardImagePopup = new PopupWithImage("#image-modal");
