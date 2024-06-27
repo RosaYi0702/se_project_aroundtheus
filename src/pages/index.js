@@ -109,7 +109,7 @@ function handleCardAddSubmit(formValues) {
   renderCard({ name, link });
   cardAddPopup.close();
   cardAddForm.reset();
-  formValidators[cardAddForm.getAttribute("id")].resetValidation();
+  formValidators[cardAddForm.getAttribute("id")].disableButton();
 }
 /* -------------------------------------------------------------------------- */
 /*                               Event Listeners                              */
