@@ -108,6 +108,8 @@ function handleCardAddSubmit(formValues) {
   const link = formValues.link;
   renderCard({ name, link });
   cardAddPopup.close();
+  cardAddForm.reset();
+  formValidators[cardAddForm.getAttribute("id")].resetValidation();
 }
 /* -------------------------------------------------------------------------- */
 /*                               Event Listeners                              */
