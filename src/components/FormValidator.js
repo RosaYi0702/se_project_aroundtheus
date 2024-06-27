@@ -26,14 +26,6 @@ export default class FormValidator {
     return !this._inputEls.every((inputEl) => inputEl.validity.valid);
   }
 
-  _toggleButtonState() {
-    if (this._hasInvalidInput(this._inputEls)) {
-      this._disableButton();
-    } else {
-      this._enableButton();
-    }
-  }
-
   _showInputError(inputEl) {
     this._errorMessageEl = this._formElement.querySelector(
       `#${inputEl.id}-error`
@@ -61,7 +53,7 @@ export default class FormValidator {
 
   _toggleButtonState() {
     if (this._hasInvalidInput(this._inputEls)) {
-      this._disableButton();
+      this.disableButton();
     } else {
       this._enableButton();
     }
