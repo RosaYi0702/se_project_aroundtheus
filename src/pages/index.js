@@ -3,6 +3,7 @@
 /* -------------------------------------------------------------------------- */
 import "./index.css";
 import { initialCards, config } from "../utils/constants.js";
+import Api from "../utils/api.js";
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import Section from "../components/Section.js";
@@ -25,6 +26,17 @@ const profileDescriptionInput = document.querySelector(
 /* -------------------------------------------------------------------------- */
 /*                                     OOP                                    */
 /* -------------------------------------------------------------------------- */
+
+const api = new Api({
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
+  headers: {
+    authorization: "f0236218-80b1-4e28-bbd2-7b2cb80c1217",
+    "Content-Type": "application/json",
+  },
+});
+
+api.getUserInfo();
+
 /* --------------------------- FormValidator(Form) -------------------------- */
 const formValidators = {};
 
@@ -40,18 +52,15 @@ const enableValidation = (config) => {
 
 enableValidation(config);
 
-//const editFormValidator = new FormValidator(config, profileEditForm);
-//editFormValidator.enableValidation();
-//const cardAddFormValidator = new FormValidator(config, cardAddForm);
-//cardAddFormValidator.enableValidation();
 /* -------------------------------- UserInfo -------------------------------- */
 const profileInfo = new UserInfo(".profile__name", ".profile__description");
-/* ------------------------------ PopupWithForm ----------------------------- */
+/* ------------------------------ ProfilePopup ----------------------------- */
 const profileEditPopup = new PopupWithForm({
   popupSelector: "#profile-edit-modal",
   handleFormSubmit: handleProfileEditSubmit,
 });
 profileEditPopup.setEventListeners();
+/* ------------------------------ cardAddPopup ------------------------------ */
 const cardAddPopup = new PopupWithForm({
   popupSelector: "#card-add-modal",
   handleFormSubmit: handleCardAddSubmit,
