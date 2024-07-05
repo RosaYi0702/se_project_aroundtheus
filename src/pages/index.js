@@ -34,9 +34,7 @@ const api = new Api({
     "Content-Type": "application/json",
   },
 });
-
-api.getUserInfo();
-
+api.addNewCard();
 /* --------------------------- FormValidator(Form) -------------------------- */
 const formValidators = {};
 
@@ -54,12 +52,23 @@ enableValidation(config);
 
 /* -------------------------------- UserInfo -------------------------------- */
 const profileInfo = new UserInfo(".profile__name", ".profile__description");
+
+api
+  .getUserInfo()
+  .then((res) => {
+    profileInfo.setUserInfo({ name: res.name, description: res.about });
+  })
+  .catch((err) => {
+    console.error(err);
+  });
+
 /* ------------------------------ ProfilePopup ----------------------------- */
 const profileEditPopup = new PopupWithForm({
   popupSelector: "#profile-edit-modal",
   handleFormSubmit: handleProfileEditSubmit,
 });
 profileEditPopup.setEventListeners();
+
 /* ------------------------------ cardAddPopup ------------------------------ */
 const cardAddPopup = new PopupWithForm({
   popupSelector: "#card-add-modal",
@@ -109,7 +118,14 @@ function renderCard(cardData) {
 /* -------------------------------------------------------------------------- */
 /* ------------------------------ Profile Edit ------------------------------ */
 function handleProfileEditSubmit(userData) {
-  profileInfo.setUserInfo(userData);
+  //profileInfo.setUserInfo(userData);
+  api.editUserInfo(userData).then((res) => {
+    profileInfo
+      .setUserInfo({ name: res.name, description: res.about })
+      .catch((err) => {
+        console.error(err);
+      });
+  });
   profileEditPopup.close();
 }
 function handleCardAddSubmit(formValues) {
@@ -126,12 +142,10 @@ function handleCardAddSubmit(formValues) {
 /* ------------------------------ Profile Edit ------------------------------ */
 profileEditButton.addEventListener("click", () => {
   fillProfileForm();
-  //editFormValidator.resetValidation();
   formValidators[profileEditForm.getAttribute("id")].resetValidation();
   profileEditPopup.open();
 });
 /* ---------------------------------- Card ---------------------------------- */
 cardAddButton.addEventListener("click", () => {
-  //cardAddFormValidator.resetValidation();
   cardAddPopup.open();
 });

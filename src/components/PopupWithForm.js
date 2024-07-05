@@ -1,5 +1,4 @@
 import Popup from "./Popup.js";
-import FormValidator from "./FormValidator.js";
 
 export default class PopupWithForm extends Popup {
   constructor({ popupSelector, handleFormSubmit }) {
@@ -26,7 +25,6 @@ export default class PopupWithForm extends Popup {
   setEventListeners() {
     this._popupForm.addEventListener("submit", (evt) => {
       evt.preventDefault();
-      //this._popupForm.reset();
       this._handleFormSubmit(this._getInputValues());
     });
     super.setEventListeners();

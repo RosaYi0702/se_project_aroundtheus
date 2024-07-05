@@ -95,7 +95,7 @@
 }
 
 .modal__button {
-  width: 100%;
+  width: 358px;
   margin-top: 48px;
   background-color: #000;
   color: #fff;
@@ -106,6 +106,10 @@
   height: 50.15px;
   cursor: pointer;
   border-radius: 2px;
+}
+
+.modal__button_yes {
+  margin-top: 38px;
 }
 
 .modal__button:hover:not(:disabled) {
