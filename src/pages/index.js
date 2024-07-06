@@ -22,7 +22,7 @@ const profileTitleInput = document.querySelector("#profile-title-input");
 const profileDescriptionInput = document.querySelector(
   "#profile-description-input"
 );
-
+const avatarEditButton = document.querySelector("#avatar-edit-button");
 /* -------------------------------------------------------------------------- */
 /*                                     OOP                                    */
 /* -------------------------------------------------------------------------- */
@@ -51,7 +51,11 @@ const enableValidation = (config) => {
 enableValidation(config);
 
 /* -------------------------------- UserInfo -------------------------------- */
-const profileInfo = new UserInfo(".profile__name", ".profile__description");
+const profileInfo = new UserInfo(
+  ".profile__name",
+  ".profile__description",
+  ".profile__avatar"
+);
 
 api
   .getUserInfo()
@@ -75,6 +79,12 @@ const cardAddPopup = new PopupWithForm({
   handleFormSubmit: handleCardAddSubmit,
 });
 cardAddPopup.setEventListeners();
+/* ------------------------------- avatarPopup ------------------------------ */
+const avatarEditPopup = new PopupWithForm({
+  popupSelector: "#profile-avatar-modal",
+  handleFormSubmit: handleAvatarEditSubmit,
+});
+avatarEditPopup.setEventListeners();
 /* ----------------------------- PopupWithImage (Card)----------------------------- */
 const cardImagePopup = new PopupWithImage("#image-modal");
 cardImagePopup.setEventListeners();
@@ -118,16 +128,17 @@ function renderCard(cardData) {
 /* -------------------------------------------------------------------------- */
 /* ------------------------------ Profile Edit ------------------------------ */
 function handleProfileEditSubmit(userData) {
-  //profileInfo.setUserInfo(userData);
-  api.editUserInfo(userData).then((res) => {
-    profileInfo
-      .setUserInfo({ name: res.name, description: res.about })
-      .catch((err) => {
-        console.error(err);
-      });
-  });
+  api
+    .editUserInfo(userData)
+    .then((res) => {
+      profileInfo.setUserInfo({ name: res.name, description: res.about });
+    })
+    .catch((err) => {
+      console.error(err);
+    });
   profileEditPopup.close();
 }
+
 function handleCardAddSubmit(formValues) {
   const name = formValues.title;
   const link = formValues.link;
@@ -135,6 +146,18 @@ function handleCardAddSubmit(formValues) {
   cardAddPopup.close();
   cardAddForm.reset();
   formValidators[cardAddForm.getAttribute("id")].disableButton();
+}
+
+function handleAvatarEditSubmit(userData) {
+  api
+    .editUserAvatar(userData)
+    .then((res) => {
+      profileInfo.setUserAvatar({ avatar: res.avatar });
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+  avatarEditPopup.close();
 }
 /* -------------------------------------------------------------------------- */
 /*                               Event Listeners                              */
@@ -148,4 +171,8 @@ profileEditButton.addEventListener("click", () => {
 /* ---------------------------------- Card ---------------------------------- */
 cardAddButton.addEventListener("click", () => {
   cardAddPopup.open();
+});
+/* ------------------------------- Avatar Edit ------------------------------ */
+avatarEditButton.addEventListener("click", () => {
+  avatarEditPopup.open();
 });

@@ -21,6 +21,7 @@
 
 .modal__container {
   position: relative;
+  width: 358px;
   max-width: 358px;
   max-height: 258px;
   background-color: #fff;
@@ -95,7 +96,7 @@
 }
 
 .modal__button {
-  width: 358px;
+  width: 100%;
   margin-top: 48px;
   background-color: #000;
   color: #fff;

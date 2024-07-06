@@ -10,13 +10,8 @@ export default class Api {
     }
     return Promise.reject(`Error:${res.status}`);
   }
-  getInitialCards() {
-    return fetch(`${this._baseUrl}/cards`, {
-      method: "GET",
-      headers: this._headers,
-    }).then(this._checkResponse);
-  }
 
+  /* ---------------------------------- User ---------------------------------- */
   getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "GET",
@@ -30,8 +25,25 @@ export default class Api {
       headers: this._headers,
       body: JSON.stringify({
         name: userData.name,
-        about: userData.job,
+        about: userData.description,
       }),
+    }).then(this._checkResponse);
+  }
+
+  editUserAvatar(userData) {
+    return fetch(`${this._baseUrl}/users/me/avatar`, {
+      method: "PATCH",
+      headers: this._headers,
+      body: JSON.stringify({
+        avatar: userData.avatar,
+      }),
+    });
+  }
+  /* ---------------------------------- Card ---------------------------------- */
+  getInitialCards() {
+    return fetch(`${this._baseUrl}/cards`, {
+      method: "GET",
+      headers: this._headers,
     }).then(this._checkResponse);
   }
 
@@ -52,5 +64,6 @@ export default class Api {
       headers: this._headers,
     }).then(this._checkResponse);
   }
+
   getAppInfo() {}
 }

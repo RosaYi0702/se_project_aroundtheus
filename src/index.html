@@ -29,6 +29,11 @@
             alt="Avatar"
             class="profile__avatar"
           />
+          <button
+            class="profile__avatar-edit"
+            type="button"
+            id="avatar-edit-button"
+          ></button>
           <div class="profile__info">
             <h1 class="profile__name">Jacques Cousteau</h1>
             <button
@@ -130,6 +135,31 @@
           <span class="modal__error" id="image-link-input-error"></span>
           <button class="modal__button modal__button_disabled" type="submit">
             Create
+          </button>
+        </form>
+      </div>
+    </div>
+    <!-- --------------------------- profile avatar --------------------------- -->
+    <div class="modal" id="profile-avatar-modal">
+      <div class="modal__container">
+        <button
+          class="modal__close"
+          id="modal-close-button"
+          type="button"
+        ></button>
+        <h2 class="modal__heading">Change profile image</h2>
+        <form class="modal__form" id="profile-avatar-form">
+          <input
+            class="modal__input"
+            name="avatar"
+            type="url"
+            id="avatar-link-input"
+            placeholder="Image link"
+            required
+          />
+          <span class="modal__error" id="avatar-link-input-error"></span>
+          <button class="modal__button modal__button_disabled" type="submit">
+            Save
           </button>
         </form>
       </div>
