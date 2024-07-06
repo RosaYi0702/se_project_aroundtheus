@@ -16,6 +16,6 @@ export default class UserInfo {
     this._jobElement.textContent = userData.description;
   }
   setUserAvatar(userData) {
-    this._avatarElement.src = `<%= require(${userData.avatar})%>`;
+    this._avatarElement.src = userData.avatar;
   }
 }

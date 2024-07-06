@@ -37,7 +37,7 @@ export default class Api {
       body: JSON.stringify({
         avatar: userData.avatar,
       }),
-    });
+    }).then(this._checkResponse);
   }
   /* ---------------------------------- Card ---------------------------------- */
   getInitialCards() {
