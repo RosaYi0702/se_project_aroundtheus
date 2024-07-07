@@ -34,7 +34,7 @@ const api = new Api({
     "Content-Type": "application/json",
   },
 });
-api.addNewCard();
+
 /* --------------------------- FormValidator(Form) -------------------------- */
 const formValidators = {};
 
@@ -89,14 +89,34 @@ avatarEditPopup.setEventListeners();
 const cardImagePopup = new PopupWithImage("#image-modal");
 cardImagePopup.setEventListeners();
 /* --------------------------------- Section -------------------------------- */
-const cardList = new Section(
-  {
-    items: initialCards,
-    renderer: renderCard,
-  },
-  ".cards__list"
-);
-cardList.renderItems();
+function cardListData() {
+  return api
+    .getInitialCards()
+    .then((res) => {
+      console.log("Fetched Cards:", res);
+      res.map((card) => ({ name: card.name, link: card.link }));
+    })
+    .catch((err) => {
+      console.error(err);
+      return [];
+    });
+}
+
+cardListData()
+  .then((data) => {
+    console.log("Card List Data:", data);
+    const cardList = new Section(
+      {
+        items: data,
+        renderer: renderCard,
+      },
+      ".cards__list"
+    );
+    cardList.renderItems();
+  })
+  .catch((err) => {
+    console.error(err);
+  });
 
 /* -------------------------------------------------------------------------- */
 /*                                  Functions                                 */
