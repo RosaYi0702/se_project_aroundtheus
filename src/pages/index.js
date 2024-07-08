@@ -197,16 +197,19 @@ function handleAvatarEditSubmit(userData) {
 }
 
 function handleDeleteClick(card) {
+  console.log("Delete button clicked");
   deleteConfirmPopup.open();
   deleteConfirmPopup.confirmDelete(() => {
+    console.log("Deletion confirmed");
     api
       .deleteCard(card.getId())
       .then(() => {
+        console.log("Card deletion API succeeded");
         card.removeCard();
         deleteConfirmPopup.close();
       })
       .catch((err) => {
-        console.error(err);
+        console.error("Card deletion API failed:", err);
       });
   });
 }
