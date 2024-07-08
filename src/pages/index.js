@@ -10,6 +10,7 @@ import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
+import PopupWithConfirmation from "../components/PopupwithConfirmation.js";
 
 /* -------------------------------------------------------------------------- */
 /*                                 used const                                 */
@@ -88,13 +89,20 @@ avatarEditPopup.setEventListeners();
 /* ----------------------------- PopupWithImage (Card)----------------------------- */
 const cardImagePopup = new PopupWithImage("#image-modal");
 cardImagePopup.setEventListeners();
+
+/* --------------------------- DeleteConfirmPopup --------------------------- */
+const deleteConfirmPopup = new PopupWithConfirmation({
+  popupSelector: "#confirmation-modal",
+  handleFormSubmit: handleDeleteClick,
+});
+deleteConfirmPopup.setEventListeners();
 /* --------------------------------- Section -------------------------------- */
 function cardListData() {
   return api
     .getInitialCards()
     .then((res) => {
       console.log("Fetched Cards:", res);
-      res.map((card) => ({ name: card.name, link: card.link }));
+      return res.map((card) => ({ name: card.name, link: card.link }));
     })
     .catch((err) => {
       console.error(err);
@@ -102,17 +110,19 @@ function cardListData() {
     });
 }
 
+const cardList = new Section(
+  {
+    renderer: (items) => {
+      cardList.addItem(items);
+    },
+  },
+  ".cards__list"
+);
+
 cardListData()
   .then((data) => {
-    console.log("Card List Data:", data);
-    const cardList = new Section(
-      {
-        items: data,
-        renderer: renderCard,
-      },
-      ".cards__list"
-    );
-    cardList.renderItems();
+    const cardElement = data.map((cardData) => createCard(cardData));
+    cardList.renderItems(cardElement);
   })
   .catch((err) => {
     console.error(err);
@@ -134,15 +144,21 @@ function handleImageClick(name, link) {
 }
 
 function createCard(cardData) {
-  const card = new Card(cardData, "#card-template", handleImageClick);
+  const card = new Card(
+    cardData,
+    "#card-template",
+    handleImageClick,
+    handleDeleteClick
+  );
   const cardElement = card.generateCard();
   return cardElement;
 }
-
+/*
 function renderCard(cardData) {
   const cardElement = createCard(cardData);
   cardList.addItem(cardElement);
 }
+*/
 /* -------------------------------------------------------------------------- */
 /*                               Event Handlers                               */
 /* -------------------------------------------------------------------------- */
@@ -162,7 +178,7 @@ function handleProfileEditSubmit(userData) {
 function handleCardAddSubmit(formValues) {
   const name = formValues.title;
   const link = formValues.link;
-  renderCard({ name, link });
+  cardList.addItem(createCard({ name, link }));
   cardAddPopup.close();
   cardAddForm.reset();
   formValidators[cardAddForm.getAttribute("id")].disableButton();
@@ -178,6 +194,21 @@ function handleAvatarEditSubmit(userData) {
       console.error(err);
     });
   avatarEditPopup.close();
+}
+
+function handleDeleteClick(card) {
+  deleteConfirmPopup.open();
+  deleteConfirmPopup.confirmDelete(() => {
+    api
+      .deleteCard(card.getId())
+      .then(() => {
+        card.removeCard();
+        deleteConfirmPopup.close();
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  });
 }
 /* -------------------------------------------------------------------------- */
 /*                               Event Listeners                              */
@@ -196,3 +227,4 @@ cardAddButton.addEventListener("click", () => {
 avatarEditButton.addEventListener("click", () => {
   avatarEditPopup.open();
 });
+/* ------------------------------- DeleteCard ------------------------------- */

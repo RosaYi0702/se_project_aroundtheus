@@ -47,19 +47,19 @@ export default class Api {
     }).then(this._checkResponse);
   }
 
-  addNewCard() {
+  addNewCard(cardData) {
     return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
       headers: this._headers,
       body: JSON.stringify({
-        name: "Bald Mountains",
-        link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg",
+        name: cardData.name,
+        link: cardData.link,
       }),
     }).then(this._checkResponse);
   }
 
-  deleteCard() {
-    return fetch(`${this._baseUrl}/cards/cardId`, {
+  deleteCard(cardID) {
+    return fetch(`${this._baseUrl}/cards/${cardID}`, {
       method: "DELETE",
       headers: this._headers,
     }).then(this._checkResponse);
