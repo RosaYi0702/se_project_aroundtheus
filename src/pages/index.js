@@ -101,8 +101,11 @@ function cardListData() {
   return api
     .getInitialCards()
     .then((res) => {
-      console.log("Fetched Cards:", res);
-      return res.map((card) => ({ name: card.name, link: card.link }));
+      return res.map((card) => ({
+        name: card.name,
+        link: card.link,
+        _id: card._id,
+      }));
     })
     .catch((err) => {
       console.error(err);
@@ -148,17 +151,13 @@ function createCard(cardData) {
     cardData,
     "#card-template",
     handleImageClick,
-    handleDeleteClick
+    handleDeleteClick,
+    handleLikeClick
   );
   const cardElement = card.generateCard();
   return cardElement;
 }
-/*
-function renderCard(cardData) {
-  const cardElement = createCard(cardData);
-  cardList.addItem(cardElement);
-}
-*/
+
 /* -------------------------------------------------------------------------- */
 /*                               Event Handlers                               */
 /* -------------------------------------------------------------------------- */
@@ -178,7 +177,17 @@ function handleProfileEditSubmit(userData) {
 function handleCardAddSubmit(formValues) {
   const name = formValues.title;
   const link = formValues.link;
-  cardList.addItem(createCard({ name, link }));
+  api
+    .addNewCard({ name, link })
+
+    .then((card) => {
+      const cardElement = createCard(card);
+      cardList.addItem(cardElement);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+
   cardAddPopup.close();
   cardAddForm.reset();
   formValidators[cardAddForm.getAttribute("id")].disableButton();
@@ -197,14 +206,11 @@ function handleAvatarEditSubmit(userData) {
 }
 
 function handleDeleteClick(card) {
-  console.log("Delete button clicked");
   deleteConfirmPopup.open();
   deleteConfirmPopup.confirmDelete(() => {
-    console.log("Deletion confirmed");
     api
       .deleteCard(card.getId())
       .then(() => {
-        console.log("Card deletion API succeeded");
         card.removeCard();
         deleteConfirmPopup.close();
       })
@@ -212,6 +218,17 @@ function handleDeleteClick(card) {
         console.error("Card deletion API failed:", err);
       });
   });
+}
+function handleLikeClick(card) {
+  const currentStatus =
+    card._likeButton.classList.contains("card__like_active");
+  const method = currentStatus ? "Delete" : "PUT";
+  api
+    .setCardLike(card.getID(), method)
+    .then(card.classList.toggle("card__like_active"))
+    .catch((err) => {
+      console.error("Like Button Error", err);
+    });
 }
 /* -------------------------------------------------------------------------- */
 /*                               Event Listeners                              */

@@ -64,6 +64,13 @@ export default class Api {
       headers: this._headers,
     }).then(this._checkResponse);
   }
+  /* ---------------------------------- Like ---------------------------------- */
 
+  setCardLike(cardID, method) {
+    return fetch(`${this._baseUrl}/cards/${cardID}/likes`, {
+      method: method,
+      headers: this._headers,
+    }).then(this._checkResponse);
+  }
   getAppInfo() {}
 }
