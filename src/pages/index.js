@@ -222,10 +222,12 @@ function handleDeleteClick(card) {
 function handleLikeClick(card) {
   const currentStatus =
     card._likeButton.classList.contains("card__like_active");
-  const method = currentStatus ? "Delete" : "PUT";
+  const method = currentStatus ? "DELETE" : "PUT";
   api
-    .setCardLike(card.getID(), method)
-    .then(card.classList.toggle("card__like_active"))
+    .setCardLike(card.getId(), method)
+    .then(() => {
+      card.classList.toggle("card__like_active");
+    })
     .catch((err) => {
       console.error("Like Button Error", err);
     });
