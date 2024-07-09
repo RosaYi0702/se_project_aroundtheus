@@ -163,6 +163,7 @@ function createCard(cardData) {
 /* -------------------------------------------------------------------------- */
 /* ------------------------------ Profile Edit ------------------------------ */
 function handleProfileEditSubmit(userData) {
+  profileEditPopup.renderLoading(true);
   api
     .editUserInfo(userData)
     .then((res) => {
@@ -170,6 +171,9 @@ function handleProfileEditSubmit(userData) {
     })
     .catch((err) => {
       console.error(err);
+    })
+    .finally(() => {
+      profileEditPopup.renderLoading(false);
     });
   profileEditPopup.close();
 }
@@ -177,6 +181,7 @@ function handleProfileEditSubmit(userData) {
 function handleCardAddSubmit(formValues) {
   const name = formValues.title;
   const link = formValues.link;
+  cardAddPopup.renderLoading(true);
   api
     .addNewCard({ name, link })
 
@@ -186,6 +191,9 @@ function handleCardAddSubmit(formValues) {
     })
     .catch((err) => {
       console.error(err);
+    })
+    .finally(() => {
+      cardAddPopup.renderLoading(false);
     });
 
   cardAddPopup.close();
@@ -194,6 +202,7 @@ function handleCardAddSubmit(formValues) {
 }
 
 function handleAvatarEditSubmit(userData) {
+  avatarEditPopup.renderLoading(true);
   api
     .editUserAvatar(userData)
     .then((res) => {
@@ -201,6 +210,9 @@ function handleAvatarEditSubmit(userData) {
     })
     .catch((err) => {
       console.error(err);
+    })
+    .finally(() => {
+      avatarEditPopup.renderLoading(false);
     });
   avatarEditPopup.close();
 }
@@ -226,7 +238,7 @@ function handleLikeClick(card) {
   api
     .setCardLike(card.getId(), method)
     .then(() => {
-      card.classList.toggle("card__like_active");
+      card._likeButton.classList.toggle("card__like_active");
     })
     .catch((err) => {
       console.error("Like Button Error", err);
