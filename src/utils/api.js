@@ -29,7 +29,12 @@ export default class Api {
       }),
     }).then(this._checkResponse);
   }
-
+  getUserAvatar() {
+    return fetch(`${this._baseUrl}/users/me`, {
+      method: "GET",
+      headers: this._headers,
+    }).then(this._checkResponse);
+  }
   editUserAvatar(userData) {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",

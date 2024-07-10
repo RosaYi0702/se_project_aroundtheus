@@ -31,7 +31,7 @@ const avatarEditButton = document.querySelector("#avatar-edit-button");
 const api = new Api({
   baseUrl: "https://around-api.en.tripleten-services.com/v1",
   headers: {
-    authorization: "f0236218-80b1-4e28-bbd2-7b2cb80c1217",
+    authorization: "cd09ed7f-1761-4d6f-8658-603e9b647e58",
     "Content-Type": "application/json",
   },
 });
@@ -75,6 +75,12 @@ const profileEditPopup = new PopupWithForm({
 });
 profileEditPopup.setEventListeners();
 
+function fillProfileForm() {
+  const userData = profileInfo.getUserInfo();
+  profileTitleInput.value = userData.name;
+  profileDescriptionInput.value = userData.job;
+}
+
 function handleProfileEditSubmit(userData) {
   profileEditPopup.renderLoading(true);
   api
@@ -98,17 +104,22 @@ profileEditButton.addEventListener("click", () => {
 });
 
 /* ------------------------------- avatarPopup ------------------------------ */
+api
+  .getUserAvatar()
+  .then((res) => {
+    console.log("get res", res);
+    profileInfo.setUserAvatar({ avatar: res.avatar });
+  })
+  .catch((err) => {
+    console.error(err);
+  });
+
 const avatarEditPopup = new PopupWithForm({
   popupSelector: "#profile-avatar-modal",
   handleFormSubmit: handleAvatarEditSubmit,
 });
 
 avatarEditPopup.setEventListeners();
-function fillProfileForm() {
-  const userData = profileInfo.getUserInfo();
-  profileTitleInput.value = userData.name;
-  profileDescriptionInput.value = userData.job;
-}
 
 function handleAvatarEditSubmit(userData) {
   avatarEditPopup.renderLoading(true);
@@ -173,6 +184,7 @@ function cardListData() {
 
 cardListData()
   .then((data) => {
+    console.log("data", data);
     const cardElement = data.map((cardData) => createCard(cardData));
     cardList.renderItems(cardElement);
   })
