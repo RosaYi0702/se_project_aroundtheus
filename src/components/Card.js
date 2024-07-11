@@ -6,16 +6,20 @@ export default class Card {
     handleDeleteClick,
     handleLikeClick
   ) {
-    this._data = data;
     this._name = data.name;
     this._link = data.link;
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
     this._handleDeleteClick = handleDeleteClick;
     this._handleLikeClick = handleLikeClick;
+
     this.cardId = data._id;
-    this._islike = data.islike;
+    this._isliked = data.isLiked;
+    this._currentStatus =
+      this._likeButton.classList.contains("card__like_active");
+    this.method = this._currentStatus ? "DELETE" : "PUT";
   }
+
   /* ------------------------------ _getTemplate ------------------------------ */
   _getTemplate() {
     this._cardElement = document
@@ -31,14 +35,13 @@ export default class Card {
     this._likeButton = this._cardElement.querySelector(".card__like");
     this._likeButton.addEventListener("click", () => {
       // this._handleLikeButton();
-      this._handleLikeClick(this);
+      this._handleLikeClick();
     });
     //trash
     this._cardElement
       .querySelector(".card__trash")
       .addEventListener("click", () => {
         this._handleDeleteClick(this);
-        //this._handleTrashButton();
       });
 
     //exhibit
@@ -47,18 +50,14 @@ export default class Card {
     });
   }
 
-  /* --------------------------------- Handler -------------------------------- */
-
-  /*_handleLikeButton() {
-    this._likeButton.classList.toggle("card__like_active");
+  updateLikeButton() {
+    const likeButton = this._cardElement.querySelector(".card__like");
+    if (this._isliked) {
+      likeButton.classList.add("card__like_active");
+    } else {
+      likeButton.classList.remove("card__like_active");
+    }
   }
-
-  /*
-  _handleTrashButton() {
-    this._cardElement.remove();
-    this._cardElement = null;
-  }
-*/
   /* ------------------------------ generateCard ------------------------------ */
   generateCard() {
     this._cardElement = this._getTemplate();
@@ -79,4 +78,5 @@ export default class Card {
   getId() {
     return this.cardId;
   }
+  /* -------------------------------- LikeCard -------------------------------- */
 }

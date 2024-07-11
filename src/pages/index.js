@@ -31,7 +31,7 @@ const avatarEditButton = document.querySelector("#avatar-edit-button");
 const api = new Api({
   baseUrl: "https://around-api.en.tripleten-services.com/v1",
   headers: {
-    authorization: "cd09ed7f-1761-4d6f-8658-603e9b647e58",
+    authorization: "556b7174-cdb9-4bbc-853b-d91bc60928df",
     "Content-Type": "application/json",
   },
 });
@@ -105,7 +105,7 @@ profileEditButton.addEventListener("click", () => {
 
 /* ------------------------------- avatarPopup ------------------------------ */
 api
-  .getUserAvatar()
+  .getUserInfo()
   .then((res) => {
     console.log("get res", res);
     profileInfo.setUserAvatar({ avatar: res.avatar });
@@ -169,28 +169,17 @@ const cardList = new Section(
 function cardListData() {
   return api
     .getInitialCards()
-    .then((res) => {
-      return res.map((card) => ({
-        name: card.name,
-        link: card.link,
-        _id: card._id,
-      }));
+    .then((data) => {
+      console.log("data", data);
+      const cardElement = data.map((cardData) => createCard(cardData));
+      cardList.renderItems(cardElement);
     })
     .catch((err) => {
       console.error(err);
-      return [];
     });
 }
 
-cardListData()
-  .then((data) => {
-    console.log("data", data);
-    const cardElement = data.map((cardData) => createCard(cardData));
-    cardList.renderItems(cardElement);
-  })
-  .catch((err) => {
-    console.error(err);
-  });
+cardListData();
 /* ------------------------------ cardAddPopup ------------------------------ */
 
 const cardAddPopup = new PopupWithForm({
@@ -214,6 +203,10 @@ function handleCardAddSubmit(formValues) {
       const cardElement = createCard(card);
       cardList.addItem(cardElement);
     })
+    .then(() => {
+      cardAddPopup.close();
+      cardAddForm.reset();
+    })
     .catch((err) => {
       console.error(err);
     })
@@ -221,8 +214,6 @@ function handleCardAddSubmit(formValues) {
       cardAddPopup.renderLoading(false);
     });
 
-  cardAddPopup.close();
-  cardAddForm.reset();
   formValidators[cardAddForm.getAttribute("id")].disableButton();
 }
 /* ----------------------------- cardImagePopup----------------------------- */
@@ -257,11 +248,8 @@ function handleDeleteClick(card) {
 
 /* -------------------------------- LikeCard -------------------------------- */
 function handleLikeClick(card) {
-  const currentStatus =
-    card._likeButton.classList.contains("card__like_active");
-  const method = currentStatus ? "DELETE" : "PUT";
   api
-    .setCardLike(card.getId(), method)
+    .setCardLike(card.getId(), card.method)
     .then(() => {
       card._likeButton.classList.toggle("card__like_active");
     })
