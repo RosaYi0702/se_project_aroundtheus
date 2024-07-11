@@ -50,14 +50,6 @@ export default class Card {
     });
   }
 
-  updateLikeButton() {
-    const likeButton = this._cardElement.querySelector(".card__like");
-    if (this._isliked) {
-      likeButton.classList.add("card__like_active");
-    } else {
-      likeButton.classList.remove("card__like_active");
-    }
-  }
   /* ------------------------------ generateCard ------------------------------ */
   generateCard() {
     this._cardElement = this._getTemplate();
