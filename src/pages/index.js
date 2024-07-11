@@ -249,7 +249,7 @@ function handleDeleteClick(card) {
 /* -------------------------------- LikeCard -------------------------------- */
 function handleLikeClick(card) {
   api
-    .setCardLike(card.getId(), card.method)
+    .setCardLike(card.getId(), card.getLikeMethod())
     .then(() => {
       card._likeButton.classList.toggle("card__like_active");
     })
