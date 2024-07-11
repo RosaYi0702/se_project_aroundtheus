@@ -15,9 +15,6 @@ export default class Card {
 
     this.cardId = data._id;
     this._isliked = data.isLiked;
-    this._currentStatus =
-      this._likeButton.classList.contains("card__like_active");
-    this.method = this._currentStatus ? "DELETE" : "PUT";
   }
 
   /* ------------------------------ _getTemplate ------------------------------ */
@@ -33,9 +30,12 @@ export default class Card {
   _setEventListeners() {
     //like button
     this._likeButton = this._cardElement.querySelector(".card__like");
+    this._currentStatus =
+      this._likeButton.classList.contains("card__like_active");
+    this.method = this._currentStatus ? "DELETE" : "PUT";
     this._likeButton.addEventListener("click", () => {
       // this._handleLikeButton();
-      this._handleLikeClick();
+      this._handleLikeClick(this);
     });
     //trash
     this._cardElement
