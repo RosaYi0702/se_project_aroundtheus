@@ -75,14 +75,14 @@ export default class Card {
     return (this.method = this._currentStatus ? "DELETE" : "PUT");
   }
   updateLikeButton() {
-    console.log("this._isliked", this._isliked);
-    if (this._isliked) {
+    if (this._isLiked) {
       return this._likeButton.classList.add("card__like_active");
     } else {
       return this._likeButton.classList.remove("card__like_active");
     }
   }
   updateLiked(isLiked) {
-    this.updateLikeButton(isLiked);
+    this._isLiked = isLiked;
+    this.updateLikeButton();
   }
 }

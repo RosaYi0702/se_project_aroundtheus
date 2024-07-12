@@ -251,7 +251,6 @@ function handleLikeClick(card) {
   api
     .setCardLike(card.getId(), card.getLikeMethod())
     .then((res) => {
-      console.log(res.isLiked);
       card.updateLiked(res.isLiked);
     })
     .catch((err) => {
