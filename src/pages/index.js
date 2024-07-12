@@ -250,8 +250,9 @@ function handleDeleteClick(card) {
 function handleLikeClick(card) {
   api
     .setCardLike(card.getId(), card.getLikeMethod())
-    .then(() => {
-      card._likeButton.classList.toggle("card__like_active");
+    .then((res) => {
+      console.log(res.isLiked);
+      card.updateLiked(res.isLiked);
     })
     .catch((err) => {
       console.error("Like Button Error", err);

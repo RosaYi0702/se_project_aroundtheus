@@ -56,7 +56,7 @@ export default class Card {
     this._imageElement.alt = this._name;
     this._cardElement.querySelector(".card__name").textContent = this._name;
     this._setEventListeners();
-
+    this.updateLikeButton();
     return this._cardElement;
   }
 
@@ -68,9 +68,21 @@ export default class Card {
   getId() {
     return this.cardId;
   }
+
   getLikeMethod() {
     this._currentStatus =
       this._likeButton.classList.contains("card__like_active");
     return (this.method = this._currentStatus ? "DELETE" : "PUT");
+  }
+  updateLikeButton() {
+    console.log("this._isliked", this._isliked);
+    if (this._isliked) {
+      return this._likeButton.classList.add("card__like_active");
+    } else {
+      return this._likeButton.classList.remove("card__like_active");
+    }
+  }
+  updateLiked(isLiked) {
+    this.updateLikeButton(isLiked);
   }
 }
