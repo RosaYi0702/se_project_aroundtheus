@@ -14,7 +14,7 @@ export default class Card {
     this._handleLikeClick = handleLikeClick;
 
     this.cardId = data._id;
-    this._isliked = data.isLiked;
+    this._isLiked = data.isLiked;
   }
 
   /* ------------------------------ _getTemplate ------------------------------ */
@@ -57,6 +57,7 @@ export default class Card {
     this._cardElement.querySelector(".card__name").textContent = this._name;
     this._setEventListeners();
     this.updateLikeButton();
+
     return this._cardElement;
   }
 
