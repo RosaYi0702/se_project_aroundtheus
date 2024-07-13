@@ -72,7 +72,8 @@ export default class Card {
   getLikeMethod() {
     this._currentStatus =
       this._likeButton.classList.contains("card__like_active");
-    return (this.method = this._currentStatus ? "DELETE" : "PUT");
+    console.log(this._currentStatus);
+    return this._currentStatus ? "DELETE" : "PUT";
   }
   updateLikeButton() {
     if (this._isLiked) {
