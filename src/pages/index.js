@@ -104,26 +104,6 @@ function fillProfileForm() {
   profileDescriptionInput.value = userData.job;
 }
 
-/*
-function handleProfileEditSubmit(userData) {
-  profileEditPopup.renderLoading(true);
-  api
-    .editUserInfo(userData)
-    .then((res) => {
-      profileInfo.setUserInfo({ name: res.name, description: res.about });
-    })
-    .then(() => {
-      profileEditPopup.close();
-    })
-    .catch((err) => {
-      console.error(err);
-    })
-    .finally(() => {
-      profileEditPopup.renderLoading(false);
-    });
-}
-*/
-
 function handleProfileEditSubmit(userData) {
   function editUserInfoRequest() {
     return api.editUserInfo(userData).then((res) => {
@@ -156,26 +136,6 @@ const avatarEditPopup = new PopupWithForm({
 });
 
 avatarEditPopup.setEventListeners();
-
-/*
-function handleAvatarEditSubmit(userData) {
-  avatarEditPopup.renderLoading(true);
-  api
-    .editUserAvatar(userData)
-    .then((res) => {
-      profileInfo.setUserAvatar({ avatar: res.avatar });
-    })
-    .then(() => {
-      avatarEditPopup.close();
-    })
-    .catch((err) => {
-      console.error(err);
-    })
-    .finally(() => {
-      avatarEditPopup.renderLoading(false);
-    });
-}
-*/
 
 function handleAvatarEditSubmit(userData) {
   function editUserAvatarRequest() {
@@ -240,32 +200,6 @@ cardAddPopup.setEventListeners();
 cardAddButton.addEventListener("click", () => {
   cardAddPopup.open();
 });
-/*
-function handleCardAddSubmit(formValues) {
-  const name = formValues.title;
-  const link = formValues.link;
-  cardAddPopup.renderLoading(true);
-  api
-    .addNewCard({ name, link })
-
-    .then((card) => {
-      const cardElement = createCard(card);
-      cardList.addItem(cardElement);
-    })
-    .then(() => {
-      cardAddPopup.close();
-      cardAddForm.reset();
-    })
-    .catch((err) => {
-      console.error(err);
-    })
-    .finally(() => {
-      cardAddPopup.renderLoading(false);
-    });
-
-  formValidators[cardAddForm.getAttribute("id")].disableButton();
-}
-*/
 
 function handleCardAddSubmit(formValues) {
   const name = formValues.title;
