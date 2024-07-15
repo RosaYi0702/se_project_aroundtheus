@@ -21,6 +21,7 @@
 
 .modal__container {
   position: relative;
+  width: 358px;
   max-width: 358px;
   max-height: 258px;
   background-color: #fff;
@@ -106,6 +107,10 @@
   height: 50.15px;
   cursor: pointer;
   border-radius: 2px;
+}
+
+.modal__button_yes {
+  margin-top: 38px;
 }
 
 .modal__button:hover:not(:disabled) {
