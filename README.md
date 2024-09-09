@@ -1,12 +1,12 @@
-* [Link to the website](https://rosayi0702.github.io/se_project_aroundtheus/)
-
-* [Video of this project](https://www.youtube.com/watch?v=7InrT5MnxVk)
-
-# Project 3: Multiyplayers Games Display(original: Around The U.S.)
+# Project 3: Multiyplayers Games Display (original: Around The U.S.)
 
 **Intro**
 
 This website showcases a collection of multiplayer games enjoyed by friends, featuring a responsive design that adapts seamlessly to both desktop (1280px) and mobile (320px) viewports. Built with attention to detail, it ensures that all elements display correctly across popular screen sizes for an optimized user experience.
+
+* [Link to the website](https://rosayi0702.github.io/se_project_aroundtheus/)
+
+* [Video of this project](https://www.youtube.com/watch?v=7InrT5MnxVk)
 
 **Figma**
 
