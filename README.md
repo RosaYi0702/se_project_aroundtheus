@@ -1,4 +1,4 @@
-# Project 3: Multiyplayers Games Display (original: Around The U.S.)
+# Project 3: Multiplayers Games Display (original: Around The U.S.)
 
 **Intro**
 
