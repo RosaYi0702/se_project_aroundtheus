@@ -2,13 +2,11 @@
 
 * [Video of this project](https://www.youtube.com/watch?v=7InrT5MnxVk)
 
-# Project 3: Around The U.S.
+# Project 3: Multiyplayers Games Display(original: Around The U.S.)
 
 **Intro**
 
-_Around the U.S._ is a website that displays beautiful photos taken by Jacques Cousteau.
-It is a webside that will adjust how it displays based on whether the users are using the website (1280 viewport) or mobile (320 viewport).
-This project is made so all the elements are displayed correctly on popular screen sizes. We recommend investing more time in completing this project, since it's more difficult than previous ones.
+This website showcases a collection of multiplayer games enjoyed by friends, featuring a responsive design that adapts seamlessly to both desktop (1280px) and mobile (320px) viewports. Built with attention to detail, it ensures that all elements display correctly across popular screen sizes for an optimized user experience.
 
 **Figma**
 
